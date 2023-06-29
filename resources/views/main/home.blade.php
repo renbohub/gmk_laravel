@@ -6,7 +6,7 @@
         <div class="contaier-fluid">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="bg-no-repeat bg-cover bg-center p-4 rounded-[6px] relative" style="background-image: url({{asset('sites/assets/images/all-img/widget-bg-1.png')}})">
+                    <div class="bg-no-repeat bg-cover bg-center p-4 rounded-[6px] relative" style="background-image: url({{asset('public/sites/assets/images/all-img/widget-bg-1.png')}})">
                       <div class="max-w-[180px]">
                         <div class="text-xl font-medium text-slate-900 mb-2">
                           Start your porting cloud

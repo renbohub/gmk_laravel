@@ -7,17 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <title>{{$tittle}}</title>
-  <link rel="icon" type="image/png" href="{{asset('sites/assets/images/logo/port.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('public/sites/assets/images/logo/port.png')}}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <!-- BEGIN: Theme CSS-->
-  <link rel="stylesheet" href="{{asset('sites/assets/css/rt-plugins.css')}}">
-  <link rel="stylesheet" href="{{asset('sites/assets/css/app.css')}}">
-  <link rel="stylesheet" href="{{asset('sites/assets/css/datatable.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/sites/assets/css/rt-plugins.css')}}">
+  <link rel="stylesheet" href="{{asset('public/sites/assets/css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('public/sites/assets/css/datatable.min.css')}}">
   <!-- End : Theme CSS-->
-  <script src="{{asset('sites/assets/js/settings.js')}}" sync></script>
+  <script src="{{asset('public/sites/assets/js/settings.js')}}" sync></script>
 </head>
 
 <body class=" font-inter dashcode-app" id="body_class">
@@ -28,9 +28,9 @@
     <div class="sidebar-wrapper group">
       <div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
       <div class="logo-segment">
-        <a class="flex items-center" href="{{asset('sites/index.html')}}">
-          <img src="{{asset('sites/assets/images/logo/port.png')}}" width="40px" class="black_logo" alt="logo">
-          <img src="{{asset('sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo" alt="logo">
+        <a class="flex items-center" href="{{asset('public/sites/index.html')}}">
+          <img src="{{asset('public/sites/assets/images/logo/port.png')}}" width="40px" class="black_logo" alt="logo">
+          <img src="{{asset('public/sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo" alt="logo">
           <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">PortingCloud</span>
         </a>
         <!-- Sidebar Type Button -->
@@ -130,8 +130,8 @@
             <div class="flex justify-between items-center h-full">
               <div class="flex items-center md:space-x-4 space-x-2 xl:space-x-0 rtl:space-x-reverse vertical-box">
                 <a href="index.html" class="mobile-logo xl:hidden inline-block">
-                  <img src="{{asset('sites/assets/images/logo/logo-c.svg')}}" class="black_logo" alt="logo">
-                  <img src="{{asset('sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo" alt="logo">
+                  <img src="{{asset('public/sites/assets/images/logo/logo-c.svg')}}" class="black_logo" alt="logo">
+                  <img src="{{asset('public/sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo" alt="logo">
                 </a>
                 <button class="smallDeviceMenuController hidden md:inline-block xl:hidden">
                   <iconify-icon class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white" icon="heroicons-outline:menu-alt-3"></iconify-icon>
@@ -146,14 +146,14 @@
               </div>
               <!-- end vertcial -->
               <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
-                <a href="{{asset('sites/index.html')}}">
+                <a href="{{asset('public/sites/index.html')}}">
                   <span class="xl:inline-block hidden">
-        <img src="{{asset('sites/assets/images/logo/logo.svg')}}" class="black_logo " alt="logo">
-        <img src="{{asset('sites/assets/images/logo/logo-white.svg')}}" class="white_logo" alt="logo">
+        <img src="{{asset('public/sites/assets/images/logo/logo.svg')}}" class="black_logo " alt="logo">
+        <img src="{{asset('public/sites/assets/images/logo/logo-white.svg')}}" class="white_logo" alt="logo">
     </span>
                   <span class="xl:hidden inline-block">
-        <img src="{{asset('sites/assets/images/logo/logo-c.svg')}}" class="black_logo " alt="logo">
-        <img src="{{asset('sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo " alt="logo">
+        <img src="{{asset('public/sites/assets/images/logo/logo-c.svg')}}" class="black_logo " alt="logo">
+        <img src="{{asset('public/sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo " alt="logo">
     </span>
                 </a>
                 <button class="smallDeviceMenuController  open-sdiebar-controller xl:hidden inline-block">
@@ -187,7 +187,7 @@
                   <button class="text-slate-800 dark:text-white focus:ring-0 focus:outline-none font-medium rounded-lg text-sm text-center
       inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="lg:h-8 lg:w-8 h-7 w-7 rounded-full flex-1 ltr:mr-[10px] rtl:ml-[10px]">
-                      <img src="{{asset('sites/assets/images/all-img/user.png')}}" alt="user" class="block w-full h-full object-cover rounded-full">
+                      <img src="{{asset('public/sites/assets/images/all-img/user.png')}}" alt="user" class="block w-full h-full object-cover rounded-full">
                     </div>
                     <span class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">{{Session::get('Users')['cust_username'] }}</span>
                     <svg class="w-[16px] h-[16px] dark:text-white hidden lg:inline-block text-base inline-block ml-[10px] rtl:mr-[10px]" aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -328,12 +328,12 @@
     </div>
   </main>
   <!-- scripts -->
-  <script src="{{asset('sites/assets/js/jquery-3.6.0.min.js')}}"></script>
-  <script src="{{asset('sites/assets/js/rt-plugins.js')}}"></script>
-  <script src="{{asset('sites/assets/js/app.js')}}"></script>
+  <script src="{{asset('public/sites/assets/js/jquery-3.6.0.min.js')}}"></script>
+  <script src="{{asset('public/sites/assets/js/rt-plugins.js')}}"></script>
+  <script src="{{asset('public/sites/assets/js/app.js')}}"></script>
   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-<script src="{{asset('sites/assets/js/datatable.min.js')}}"></script>
+<script src="{{asset('public/sites/assets/js/datatable.min.js')}}"></script>
 @yield('script')
 </body>
 </html>
