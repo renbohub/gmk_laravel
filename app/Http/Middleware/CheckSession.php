@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Session;
 use App\Http\Traits\GeneralServices;
+use Illuminate\Support\Facades\Route;
+
+
 
 class CheckSession
 {
@@ -18,12 +21,30 @@ class CheckSession
     use GeneralServices;
     public function handle($request, Closure $next)
     {
-        $data = session('Users');
+        $route = Route::getRoutes()->match($request);
+        $currentroute = $route->getName();
+        $data = session('Pages');
+       
         if (empty($data)) {
             return redirect('/logout');
         }
+        $page = $data;
+        $containsDashboard = false;
+        // dd($page);
+        foreach ($page as $item) {
+            if ($item['route_name'] === $currentroute) {
+                $containsDashboard = true;
+                break;  // If found, no need to continue the loop
+            }
+        }
+
+        if ($containsDashboard) {
+             return $next($request);
+        } else {
+            return redirect('/403');
+        }
         // $this->setMenu();
-        return $next($request);
+       
 
     }
 }

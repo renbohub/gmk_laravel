@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Traits\GeneralServices;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Hash;
+use App\Models\LUser;
+use App\Models\LRole;
+use App\Models\LRoute;
+use App\Models\TPermission;
 use Session;
 
 class LoginController extends Controller
@@ -18,7 +23,7 @@ class LoginController extends Controller
     public function post(Request $request)
     {
         $role = [
-            'email' => 'Required',
+            'username' => 'Required',
             'password' => 'Required',
         ];
         
@@ -28,16 +33,33 @@ class LoginController extends Controller
         if (!empty($validateData)) {
             return redirect()->back()->withErrors($validateData);
         }
-        $login = Http::post('http://porting.my.id:1880/porting/api/v1.0/web/auth/login', $request->all());
-        $data = $login->json();
-        
-        if($data['status_code'] != 200) {
-           
-            return redirect()->back()->withErrors($data['status_desc']);
+       
+        $password = $request['password'];
+        $user = LUser::where('username', $request['username'])
+                ->first();
+        if($user!==null){
+            $hashedPassword = $user['password'];
+            if (Hash::check($password, $hashedPassword)) {
+                $login = LUser::where('username', $request['username'])
+                ->first();
+                $page = TPermission::where('role_id',$login['role_id'])
+                ->join('l_routes','t_permissions.route_id','l_routes.route_id')
+                ->get();
+                session::put('Pages',$page);
+            } else {
+                $login = null;
+            }
+        }else{
+            Session::flush();
+            return redirect()->back()->withErrors("username tidak tersedia");
         }
-        Session::put('Users',$login['content']);
-        
-
+       
+        if($login==null){
+            Session::flush();
+            return redirect()->back()->withErrors("password salah");
+        }
+       
+        session::put('Users',$login);
         return redirect('/');
     }
 

@@ -11,10 +11,16 @@ class ErrorController extends Controller
 {
     use GeneralServices;
     public function e404(Request $request){
-        $cust_id = Session::get('Users')['cust_id'];
+       
         
         $data['tittle'] = 'Porting - Dashboard';
         return view('error.404',$data);
+    }
+    public function e403(Request $request){
+       
+        
+        $data['tittle'] = 'Porting - Dashboard';
+        return view('error.403',$data);
     }
     
    

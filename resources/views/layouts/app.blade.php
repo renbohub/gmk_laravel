@@ -11,8 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> --}}
   <!-- BEGIN: Theme CSS-->
+  <link rel="stylesheet" href="{{asset('public/sites/css/bootstrap-multiselect.css')}}" type="text/css"/>
   <link rel="stylesheet" href="{{asset('public/sites/assets/css/rt-plugins.css')}}">
   <link rel="stylesheet" href="{{asset('public/sites/assets/css/app.css')}}">
   <link rel="stylesheet" href="{{asset('public/sites/assets/css/datatable.min.css')}}">
@@ -31,7 +32,7 @@
         <a class="flex items-center" href="{{asset('public/sites/index.html')}}">
           <img src="{{asset('public/sites/assets/images/logo/port.png')}}" width="40px" class="black_logo" alt="logo">
           <img src="{{asset('public/sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo" alt="logo">
-          <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">PortingCloud</span>
+          <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">Production Dashboard</span>
         </a>
         <!-- Sidebar Type Button -->
         <div id="sidebar_type" class="cursor-pointer text-slate-900 dark:text-white text-lg">
@@ -142,47 +143,8 @@
                   <span class="xl:inline-block hidden ml-3">Search...
                    </span>
                 </button>
-
               </div>
-              <!-- end vertcial -->
-              <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
-                <a href="{{asset('public/sites/index.html')}}">
-                  <span class="xl:inline-block hidden">
-        <img src="{{asset('public/sites/assets/images/logo/logo.svg')}}" class="black_logo " alt="logo">
-        <img src="{{asset('public/sites/assets/images/logo/logo-white.svg')}}" class="white_logo" alt="logo">
-    </span>
-                  <span class="xl:hidden inline-block">
-        <img src="{{asset('public/sites/assets/images/logo/logo-c.svg')}}" class="black_logo " alt="logo">
-        <img src="{{asset('public/sites/assets/images/logo/logo-c-white.svg')}}" class="white_logo " alt="logo">
-    </span>
-                </a>
-                <button class="smallDeviceMenuController  open-sdiebar-controller xl:hidden inline-block">
-                  <iconify-icon class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white" icon="heroicons-outline:menu-alt-3"></iconify-icon>
-                </button>
-
-              </div>
-              
               <div class="nav-tools flex items-center lg:space-x-5 space-x-3 rtl:space-x-reverse leading-0">
-
-              
-
-                
-                <!-- END: TOggle Theme -->
-
-               
-
-                <!-- BEGIN: Message Dropdown -->
-                <!-- Mail Dropdown -->
-                
-                <!-- END: Message Dropdown -->
-
-                <!-- BEGIN: Notification Dropdown -->
-                <!-- Notifications Dropdown area -->
-                
-                <!-- END: Notification Dropdown -->
-
-                <!-- BEGIN: Profile Dropdown -->
-                <!-- Profile DropDown Area -->
                 <div class="md:block hidden w-full">
                   <button class="text-slate-800 dark:text-white focus:ring-0 focus:outline-none font-medium rounded-lg text-sm text-center
       inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -217,7 +179,7 @@
                       <li>
                         <a href="{{route('logout-action')}}" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
-                          <iconify-icon icon="heroicons-outline:login" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
+                          <iconify-icon icon="heroicons-outline:logout" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Logout</span>
                         </a>
                       </li>
@@ -292,14 +254,11 @@
           <div>
             <span class="relative cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center mb-1 dark:text-white
           text-slate-900 ">
-        <iconify-icon icon="heroicons-outline:mail"></iconify-icon>
-        <span class="absolute right-[5px] lg:hrefp-0 -hrefp-2 h-4 w-4 bg-red-500 text-[8px] font-semibold flex flex-col items-center
-            justify-center rounded-full text-white z-[99]">
-          10
-        </span>
+        <iconify-icon icon="heroicons-outline:cog"></iconify-icon>
+       
             </span>
             <span class="block text-[11px] text-slate-600 dark:text-slate-300">
-        Messages
+        Setting
       </span>
           </div>
         </a>
@@ -313,14 +272,11 @@
           <div>
             <span class=" relative cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center mb-1 dark:text-white
           text-slate-900">
-        <iconify-icon icon="heroicons-outline:bell"></iconify-icon>
-        <span class="absolute right-[17px] lg:hrefp-0 -hrefp-2 h-4 w-4 bg-red-500 text-[8px] font-semibold flex flex-col items-center
-            justify-center rounded-full text-white z-[99]">
-          2
-        </span>
+        <iconify-icon icon="heroicons-outline:logout"></iconify-icon>
+        
             </span>
             <span class=" block text-[11px] text-slate-600 dark:text-slate-300">
-        Notifications
+        Logout
       </span>
           </div>
         </a>

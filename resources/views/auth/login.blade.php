@@ -1,76 +1,42 @@
     
     @extends('layouts.guest')
-
-    @section('title', 'AJI MIS | DASHBOARD')
     
     @section('content')
-    
-    <div class="loginwrapper bg-cover bg-no-repeat bg-center" style="background-image: url(assets/images/all-img/page-bg.png);">
-        <div class="lg-inner-column">
-          <div class="left-columns lg:w-1/2 lg:block hidden">
-            <div class="logo-box-3">
-              <a heref="index.html" class="">
-                <img src="assets/images/logo/logo-white.svg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="lg:w-1/2 w-full flex flex-col items-center justify-center">
-            <div class="auth-box-3">
-              <div class="mobile-logo text-center mb-6 lg:hidden block">
-                <a heref="index.html">
-                  <img src="assets/images/logo/logo.svg" alt="" class="mb-10 dark_logo">
-                  <img src="assets/images/logo/logo-white.svg" alt="" class="mb-10 white_logo">
-                </a>
+    <div class="login">
+      <!-- BEGIN login-content -->
+      <div class="login-content">
+          
+          <form action="{{route('login-action')}}" method="POST" name="login_form">
+              @csrf
+              <h1 class="text-center">Login</h1>
+              <div class="text-white text-opacity-50 text-center mb-4">
+                  For your protection, please verify your identity.
               </div>
-              <div class="text-center 2xl:mb-10 mb-5">
-                <h4 class="font-medium">Login</h4>
-                <div class="text-slate-500 dark:text-slate-400 text-base">
-                  Login to Proting Client-zone
-                </div>
+              <div class="mb-3">
+                  <label class="form-label">Username <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" value="" placeholder=""
+                      name="username" require />
               </div>
-    
-              <!-- BEGIN: Registration Form -->
-              <form class="space-y-4" action="{{route('login-action')}}" method="POST">
-                @if(request()->has('regist'))
-                    <div class="alert alert-info">
-                        {{ request()->get('regist') }}
-                    </div>
-                @endif
-                @csrf
-                <div class="fromGroup">
-                  <label class="block capitalize form-label">email</label>
-                  <div class="relative ">
-                    <input type="email" name="email" class="  form-control py-2" placeholder="Enter your email" required>
+              <div class="mb-3">
+                  <div class="d-flex">
+                      <label class="form-label">Password <span class="text-danger">*</span></label>
+                      <a href="#" class="ms-auto text-white text-decoration-none text-opacity-50">Forgot password?</a>
                   </div>
-                </div>
-                <div class="fromGroup       ">
-                  <label class="block capitalize form-label  ">passwrod</label>
-                  <div class="relative "><input type="password" name="password" class="  form-control py-2   " placeholder="Enter your password" required>
+                  <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" value=""
+                      placeholder="" name="password" require />
+              </div>
+              <div class="mb-3">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="customCheck1" />
+                      <label class="form-check-label" for="customCheck1">Remember me</label>
                   </div>
-                </div>
-                
-                <button class="btn btn-dark block w-full text-center">Login</button>
-              </form>
-              <!-- END: Registration Form -->
-              
-              <div class="max-w-[242px] mx-auto mt-8 w-full">
-    
-                <!-- BEGIN: Social Log in Area -->
-               
-                <!-- END: Social Log In Area -->
               </div>
-              <div class="mx-auto font-normal text-slate-500 dark:text-slate-400 2xl:mt-12 mt-6 uppercase text-sm text-center">
-                If you don't have account
-                <a href="{{route('signup-main')}}" class="text-slate-900 dark:text-white font-medium hover:underline">
-                  Sign Up
-                </a>
+              <button type="submit" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
+              <div class="text-center text-white text-opacity-50">
+                  Don't have an account yet? <a href="index.php?page=register">Sign up</a>.
               </div>
-            </div>
-          </div>
-          <div class="auth-footer3 text-white py-5 px-5 text-xl w-full">
-            Unlock your Project performance
-          </div>
-        </div>
+          </form>
       </div>
-
-@endsection
+      <!-- END login-content -->
+  </div>    
+    @endsection

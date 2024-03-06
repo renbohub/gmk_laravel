@@ -18,23 +18,24 @@ Route::post('/login', 'App\Http\Controllers\Auth\LoginController@post')->name('l
 Route::get('/signup', 'App\Http\Controllers\Auth\SignupController@index')->name('signup-main');
 Route::post('/signup', 'App\Http\Controllers\Auth\SignupController@post')->name('signup-action');
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout-action');
-
+Route::get('/404', 'App\Http\Controllers\Main\ErrorController@e404')->name('e404');
+Route::get('/404', 'App\Http\Controllers\Main\ErrorController@e403')->name('e403');
 
 
 Route::group(['middleware' => ['CheckSession']], function(){
     // Protected routes here
     Route::get('/', 'App\Http\Controllers\Main\DashboardController@index')->name('dashboard');
-    Route::get('/power-monitoring', 'App\Http\Controllers\Main\DashboardController@pm')->name('pm-dashboard');
-    Route::get('/production-dashboard', 'App\Http\Controllers\Main\DashboardController@prod')->name('prod-dashboard');
-
-    Route::get('/production-dashboard/{token}', 'App\Http\Controllers\Main\DashboardController@prodDetail')->name('prod-dashboard-detail');
-    Route::post('/production-dashboard/{token}', 'App\Http\Controllers\Main\DashboardController@prodDetailEdit')->name('edit-detail-action');
-
-    // Post HMI device
-    Route::post('/production-dashboard', 'App\Http\Controllers\Main\DashboardController@addHmi')->name('add-device');
+    Route::get('/detail', 'App\Http\Controllers\Main\DashboardController@detail')->name('graphic.realtime');
+    Route::get('/report', 'App\Http\Controllers\Main\DashboardController@report')->name('alarm.view');
+    Route::post('/export', 'App\Http\Controllers\Main\DashboardController@exportData')->name('export.data');
+    Route::get('/edit/shift', 'App\Http\Controllers\Main\EditController@editShift')->name('edit.shift');
+    Route::get('/edit/user', 'App\Http\Controllers\Main\EditController@editUser')->name('edit.user');
+    Route::get('/edit/permission', 'App\Http\Controllers\Main\EditController@editPermission')->name('edit.permission');
     
-
-
-    //404
-    Route::get('/404', 'App\Http\Controllers\Main\ErrorController@e404')->name('404');
+    
 });
+
+//api ajax
+Route::post('/realtime-valve', 'App\Http\Controllers\Main\RealtimeDataController@realtimeValve')->name('realtime.valve');
+Route::post('/realtime-tank', 'App\Http\Controllers\Main\RealtimeDataController@realtimeTank')->name('realtime.tank');
+Route::post('/graphic-tank', 'App\Http\Controllers\Main\RealtimeDataController@graphicTank')->name('graphic.tank');

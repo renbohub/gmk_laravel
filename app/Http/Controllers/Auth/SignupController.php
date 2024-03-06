@@ -18,11 +18,12 @@ class SignupController extends Controller
     public function index()
 
     {
+        $data['code'] = '-';
         return view('auth.register');
     }
     public function post(Request $req){
         // dd($req->username);
-        $response = Http::post('http://porting.my.id:1880/porting/api/v1.0/web/auth/signup', [
+        $response = Http::post('http://127.0.0.1:1880/porting/api/v1.0/web/auth/signup', [
             "ngecekweieumah"    => "wiixsdaqweAF!3213!414%!%%",
             "username"          => $req->username,
             "email"             => $req->email,
@@ -34,14 +35,14 @@ class SignupController extends Controller
             
         ]);
         $data = $response->json();
-        $status = $data['status'];
+        $status = $data['status_code'];
         
         if ($status == 200) {
             $data['code'] = $data['status_desc'];
-            return view('auth.verify-email',$data);
+            return view('auth.register',$data);
         }else{
             $data['code'] = $data['status_desc'];
-            return view('auth.verify-email',$data); 
+            return view('auth.register',$data); 
         }
 
     }

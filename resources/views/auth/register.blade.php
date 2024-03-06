@@ -23,9 +23,9 @@
                 </a>
               </div>
               <div class="text-center 2xl:mb-10 mb-5">
-                <h4 class="font-medium">Sign UP</h4>
+                 <h4 class="font-medium text-center"><center><img src="{{asset('public/sites/img/logo-dharma.png')}}" width="50%" alt=""></center></h4>
                 <div class="text-slate-500 dark:text-slate-400 text-base">
-                  Let join with Proting IIoT Cloud 
+                  Create Account
                 </div>
               </div>
     
@@ -65,7 +65,12 @@
                 <button class="btn btn-dark block w-full text-center">Create an account</button>
               </form>
               <!-- END: Registration Form -->
-              
+              <div style="color: red">
+                <center>
+                  <br>
+                  
+                </center>
+              </div>
               <div class="max-w-[242px] mx-auto mt-8 w-full">
     
                 <!-- BEGIN: Social Log in Area -->

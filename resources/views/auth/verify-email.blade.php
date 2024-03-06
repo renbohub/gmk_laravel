@@ -15,14 +15,17 @@
             <div class="w-full px-4 sms:px-0 sm:w-[450px]">
                 <div class="text-center">
                     <h4 class="font-medium">
-                        {{ $code }}
+                        contact your administrator to active your account
                     </h4>
                     <p>If you have click link verification <br>
                         <a href="{{route('login-main')}}" style="color: blue">click here</a> to login
-                    </p>
-
+                    </p>                 
+                   @if(isset($code) && !empty($code))
+                        <!-- Your HTML or Blade code when $variable is set and not empty -->
+                        {{ $code }} <!-- Display the variable, if needed -->
+                    @else
+                        
                    
-
                     
                 </div>
             </div>
