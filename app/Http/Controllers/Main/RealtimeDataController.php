@@ -26,8 +26,16 @@ class RealtimeDataController extends Controller
     {
         // Your logic to handle the Ajax request
         $filter = $request['option'];
-        $data = DB::select('SELECT * FROM t_log_tanki limit 200');
+        $data = DB::select('SELECT * FROM t_log_tanki order by id desc limit 200');
        
         return response()->json(['data' => $data,'filter'=> $filter]);
+    }
+    
+    public function graphicTankDetail(Request $request)
+    {
+        
+        $data = DB::select('SELECT * FROM t_tanki_graphic');
+       
+        return response()->json(['data' => $data]);
     }
 }

@@ -39,3 +39,4 @@ Route::group(['middleware' => ['CheckSession']], function(){
 Route::post('/realtime-valve', 'App\Http\Controllers\Main\RealtimeDataController@realtimeValve')->name('realtime.valve');
 Route::post('/realtime-tank', 'App\Http\Controllers\Main\RealtimeDataController@realtimeTank')->name('realtime.tank');
 Route::post('/graphic-tank', 'App\Http\Controllers\Main\RealtimeDataController@graphicTank')->name('graphic.tank');
+Route::post('/graphic-tank-detail', 'App\Http\Controllers\Main\RealtimeDataController@graphicTankDetail')->name('graphic.tank.detail');

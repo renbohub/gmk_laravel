@@ -2,37 +2,20 @@
     @section('content')
         <div class="container-fluid ">
             <div class="row pt-4">
-              <div class="col-12">
-                <h4>Reproting Graphic</h4>
-              </div>
+              
               <div class="col-3">
                 <div class="card">
-                  <div class="card-header"><div class="div"><h4>Reporting Option</h4></div></div>
+                  <div class="card-header pt-2 py-1"><h4>Reporting Option</h4></div>
                   <div class="card-body">
                     <form action="{{route('export.data')}}" method="post" id="report_option">
-                      
+                      @csrf
                       <div class="mb-3" id="year">
-                        <label for="year" class="form-label">Select Year</label>
-                        <input type="number" min="2023" max="2100" class="form-control"  name="number" placeholder="2023" value="2023">
+                        <label for="year" class="form-label">Start From</label>
+                        <input type="date" class="form-control"  name="date-start">
                       </div>
-                      <div class="mb-3" id="month">
-                        <label for="month" class="form-label">Select Month</label>
-                        <div class="form-group">
-                          <select class="form-control" name="month">
-                            <option value="1"selected>January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">Augst</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                          </select>
-                        </div>
+                      <div class="mb-3" id="year">
+                        <label for="year" class="form-label">End Date</label>
+                        <input type="date" class="form-control"  name="date-start">
                       </div>
                       <div class="mb-3" id="shift">
                         <label for="shift" class="from-label">Shift</label>
@@ -44,18 +27,20 @@
                           </select>
                         </div>
                       </div>
-                      <div class="mb-3" id="month">
-                        <button type="button" class="btn btn-success" id="submitBtn">Submit</button>
+                      <div class="mb-3" id="year">
+                        <button type="submit" class="btn btn-success" id="submitBtn">Submit</button>
                       </div>
                       
-                  
-                    
-                      <div class="mb-3" id="month">
-                        @csrf
-                         <button type="submit" id="export-btn" class="btn btn-primmary">Export to Excel</button>
-                      </div>
+                      <button type="submit" id="export-btn" class="btn btn-primmary">Export to Excel</button>
+                     
                     </form>
                      
+                  </div>
+                  <div class="card-arrow">
+                    <div class="card-arrow-top-left"></div>
+                    <div class="card-arrow-top-right"></div>
+                    <div class="card-arrow-bottom-left"></div>
+                    <div class="card-arrow-bottom-right"></div>
                   </div>
                 </div>
               </div>
@@ -93,6 +78,12 @@
                         
                       </tbody>
                     </table>
+                  </div>
+                  <div class="card-arrow">
+                    <div class="card-arrow-top-left"></div>
+                    <div class="card-arrow-top-right"></div>
+                    <div class="card-arrow-bottom-left"></div>
+                    <div class="card-arrow-bottom-right"></div>
                   </div>
                 </div>
               </div>

@@ -262,11 +262,14 @@
     var options = {
           series: [],
           chart: {
-          height: 180,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
+            height: 180,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
+            animations: {
+                enabled: false,
+            }
         },
         dataLabels: {
           enabled: false
@@ -292,6 +295,9 @@
             }
           },
 
+        },
+        tooltip: {
+            enabled: false,
         },
         yaxis: {
             labels: {
@@ -330,7 +336,7 @@
 
     function getRealtimeTank() {
         var checkboxes = document.querySelectorAll('#checkboxForm input[type="checkbox"]');
-// Filter and create an array of selected checkbox values
+        // Filter and create an array of selected checkbox values
         var selectedOptions = Array.from(checkboxes)
           .filter(checkbox => checkbox.checked)
           .map(checkbox => checkbox.value);
@@ -367,7 +373,7 @@
                 t21 = [];
                 t22 = [];
                 
-                for (let i = 0 ; i < data.length; i++) {
+                for (let i = data.length -1 ; i > 0 ; i--) {
                   // tanki 3
                     if(filter.t_3=='true'){ tank3 = data[i].tanki_3;}else{tank3 =0}
                     if(filter.t_4=='true'){ tank4 = data[i].tanki_4;}else{tank4 =0}
@@ -483,8 +489,155 @@
                 
             }
         });
-      };
-    setInterval(getRealtimeTank, 1000);
+    };
+    setInterval(getRealtimeTank, 2000);
+
+    function getRealtimeTankD() {
+        $.ajax({
+            url: '{{route("graphic.tank.detail")}}',
+            type: 'POST',
+            data: {
+              _token: "{{ csrf_token() }}",
+            },
+            success: function(response) {
+                var data = response.data;
+                console.log(data);
+                t3 = [];
+                t4 = [];
+                t5 = [];
+                t6 = [];
+                t7 = [];
+                t8 = [];
+                t10 = [];
+                t17 = [];
+                t21 = [];
+                t22 = [];
+                
+                for (let i = 0 ; i < data.length; i++) {
+                  // tanki 3
+                    tank3 = data[i].tanki_3;
+                    tank4 = data[i].tanki_4;
+                    tank5 = data[i].tanki_5;
+                    tank6 = data[i].tanki_6;
+                    tank7 = data[i].tanki_7;
+                    tank8 = data[i].tanki_8;
+                    tank10 = data[i].tanki_10;
+                    tank17 = data[i].tanki_17;
+                    tank21 = data[i].tanki_21;
+                    tank22 = data[i].tanki_22;
+                       
+                    const originalDate = new Date(data[i].last_update);
+                    const newDate = new Date(originalDate);                   // Adding 5 hours
+                    newDate.setHours(newDate.getHours() + 7);
+
+                    d = newDate.toISOString();
+
+                    dt = d.split('T')[1];
+                    dz = dt.split('.')[0];
+
+                    f3 = {
+                        'x': dz,
+                        'y': tank3
+                    }
+                    f4 = {
+                        'x': dz,
+                        'y': tank4
+                    }
+
+                    f5 = {
+                        'x': dz,
+                        'y': tank5
+                    }
+                    f6 = {
+                        'x': dz,
+                        'y': tank6
+                    }
+
+                    f7 = {
+                        'x': dz,
+                        'y': tank7
+                    }
+                    f8 = {
+                        'x': dz,
+                        'y': tank8
+                    }
+
+                    f10 = {
+                        'x': dz,
+                        'y': tank10
+                    }
+                    f17 = {
+                        'x': dz,
+                        'y': tank17
+                    }
+
+                    f21 = {
+                        'x': dz,
+                        'y': tank21
+                    }
+                    f22 = {
+                        'x': dz,
+                        'y': tank22
+                    }
+                  
+                    t3.push(f3);
+                    t4.push(f4);
+                    t5.push(f5);
+                    t6.push(f6);
+                    t7.push(f7);
+                    t8.push(f8);
+                    t10.push(f10);
+                    t17.push(f17);
+                    t21.push(f21);
+                    t22.push(f22);
+                   
+                
+
+                }
+                chart_1.updateSeries([{
+                    name: 'Tanki 3',
+                    data: t3
+                }]);
+                chart_2.updateSeries([{
+                    name: 'Tanki 4',
+                    data: t4
+                }]);
+                chart_3.updateSeries([{
+                    name: 'Tanki 5',
+                    data: t5
+                }]);
+                chart_4.updateSeries([{
+                    name: 'Tanki 6',
+                    data: t6
+                }]);
+                chart_5.updateSeries([{
+                    name: 'Tanki 7',
+                    data: t7
+                }]);
+                chart_6.updateSeries([{
+                    name: 'Tanki 8',
+                    data: t8
+                }]);
+                chart_7.updateSeries([{
+                    name: 'Tanki 10',
+                    data: t10
+                }]);
+                chart_8.updateSeries([{
+                    name: 'Tanki 17',
+                    data: t17
+                }]);
+                chart_9.updateSeries([{
+                    name: 'Tanki 21',
+                    data: t21
+                }]);
+                chart_10.updateSeries([{
+                    name: 'Tanki 22',
+                    data: t22
+                }]);
+            }
+        });
+    };
+    setInterval(getRealtimeTankD, 5000);
   </script>
     @endsection
     
