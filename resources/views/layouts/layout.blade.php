@@ -100,7 +100,7 @@
                 <ul class="nav justify-content-start">
                   <li class="nav-item">
                      <a class="navbar-brand" href="#">
-                        <img src="{{asset('public/sites/img/logo.png')}}" width="30" height="30" alt="" class="d-inline-block align-middle">
+                        <img src="{{asset('public/sites/img/logo-1.png')}}" width="30" height="30" alt="" class="d-inline-block align-middle">
                         
                     </a>                  
                   </li>
@@ -121,7 +121,7 @@
                     <a class="nav-link" href="{{route('alarm.view')}}">Alarm Log</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('export.data')}}">Reporting</a>
+                    <a class="nav-link" href="{{route('graphic.report')}}">Reporting</a>
                   </li>
                 </ul>
             </div>
@@ -133,7 +133,7 @@
 <!-- END btn-scroll-top -->
 </div>
 <!-- END #app -->
-<div class="app-theme-panel">
+        <div class="app-theme-panel">
            <div class="app-theme-panel-container">
                <a href="javascript:;" data-toggle="theme-panel-expand" class="app-theme-toggle-btn"><i class="bi bi-sliders"></i></a>
                <div class="app-theme-panel-content">
@@ -263,6 +263,7 @@
 <!-- ================== END page-js ================== -->
 
 @yield('script')
+
 <script>
 (function(i, s, o, g, r, a, m) {
    i['GoogleAnalyticsObject'] = r;

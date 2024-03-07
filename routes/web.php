@@ -26,8 +26,10 @@ Route::group(['middleware' => ['CheckSession']], function(){
     // Protected routes here
     Route::get('/', 'App\Http\Controllers\Main\DashboardController@index')->name('dashboard');
     Route::get('/detail', 'App\Http\Controllers\Main\DashboardController@detail')->name('graphic.realtime');
-    Route::get('/report', 'App\Http\Controllers\Main\DashboardController@report')->name('alarm.view');
-    Route::post('/export', 'App\Http\Controllers\Main\DashboardController@exportData')->name('export.data');
+    Route::get('/report-alarm', 'App\Http\Controllers\Main\DashboardController@reportAlarm')->name('alarm.view');
+    Route::post('/report-alarm-act', 'App\Http\Controllers\Main\DashboardController@reportAlarmAct')->name('alarm.report');
+    Route::get('/report', 'App\Http\Controllers\Main\DashboardController@report')->name('graphic.report');
+    Route::post('/report-data', 'App\Http\Controllers\Main\DashboardController@reportData')->name('export.data');
     Route::get('/edit/shift', 'App\Http\Controllers\Main\EditController@editShift')->name('edit.shift');
     Route::get('/edit/user', 'App\Http\Controllers\Main\EditController@editUser')->name('edit.user');
     Route::get('/edit/permission', 'App\Http\Controllers\Main\EditController@editPermission')->name('edit.permission');

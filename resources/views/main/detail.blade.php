@@ -288,7 +288,7 @@
           },
         },
         xaxis: {
-          
+          type : 'datetime',
           labels: {
             style: {
               colors: '#fff',
@@ -361,7 +361,7 @@
             success: function(response) {
                 var data = response.data;
                 var filter = response.filter;
-                console.log(data);
+             
                 t3 = [];
                 t4 = [];
                 t5 = [];
@@ -375,16 +375,7 @@
                 
                 for (let i = data.length -1 ; i > 0 ; i--) {
                   // tanki 3
-                    if(filter.t_3=='true'){ tank3 = data[i].tanki_3;}else{tank3 =0}
-                    if(filter.t_4=='true'){ tank4 = data[i].tanki_4;}else{tank4 =0}
-                    if(filter.t_5=='true'){ tank5 = data[i].tanki_5;}else{tank5 =0}
-                    if(filter.t_6=='true'){ tank6 = data[i].tanki_6;}else{tank6 =0}
-                    if(filter.t_7=='true'){ tank7 = data[i].tanki_7;}else{tank7 =0}
-                    if(filter.t_8=='true'){ tank8 = data[i].tanki_8;}else{tank8 =0}
-                    if(filter.t_10=='true'){ tank10 = data[i].tanki_10;}else{tank10 =0}
-                    if(filter.t_17=='true'){ tank17 = data[i].tanki_17;}else{tank17 =0}
-                    if(filter.t_21=='true'){ tank21 = data[i].tanki_21;}else{tank21 =0}
-                    if(filter.t_22=='true'){ tank22 = data[i].tanki_22;}else{tank22 =0}
+                  
                        
                     const originalDate = new Date(data[i].last_update);
                     const newDate = new Date(originalDate);                   // Adding 5 hours
@@ -393,63 +384,88 @@
                     d = newDate.toISOString();
 
                     dt = d.split('T')[1];
-                    dz = dt.split('.')[0];
 
-                    f3 = {
+                    dz = data[i].last_update;
+                    if(filter.t_3=='true'){ 
+                      tank3 = data[i].tanki_3;
+                      f3 = {
                         'x': dz,
                         'y': tank3
+                      };
+                      t3.push(f3);
                     }
-                    f4 = {
+                    if(filter.t_4=='true'){ 
+                      tank4 = data[i].tanki_4;
+                      f4 = {
                         'x': dz,
                         'y': tank4
+                      };
+                      t4.push(f4);
                     }
-
-                    f5 = {
+                    if(filter.t_5=='true'){ 
+                      tank5 = data[i].tanki_5;
+                      f5 = {
                         'x': dz,
                         'y': tank5
+                      };
+                      t5.push(f5);
                     }
-                    f6 = {
+                    if(filter.t_6=='true'){ 
+                      tank6 = data[i].tanki_6;
+                      f6 = {
                         'x': dz,
                         'y': tank6
+                      };
+                      t6.push(f6);
                     }
-
-                    f7 = {
+                    if(filter.t_7=='true'){ 
+                      tank7 = data[i].tanki_7;
+                      f7 = {
                         'x': dz,
                         'y': tank7
+                      };
+                      t7.push(f7);
                     }
-                    f8 = {
+                    if(filter.t_8=='true'){ 
+                      tank8 = data[i].tanki_8;
+                      f8 = {
                         'x': dz,
                         'y': tank8
+                      };
+                      t8.push(f8);
                     }
-
-                    f10 = {
+                    if(filter.t_10=='true'){ 
+                      tank10 = data[i].tanki_10;
+                      f10 = {
                         'x': dz,
                         'y': tank10
+                      };
+                      t10.push(f10);
                     }
-                    f17 = {
+                    if(filter.t_17=='true'){ 
+                      tank17 = data[i].tanki_17;
+                      f17 = {
                         'x': dz,
                         'y': tank17
+                      };
+                      t17.push(f17);
                     }
-
-                    f21 = {
+                    if(filter.t_21=='true'){ 
+                      tank21 = data[i].tanki_21;
+                      f21 = {
                         'x': dz,
                         'y': tank21
+                      };
+                      t21.push(f21);
                     }
-                    f22 = {
+                    if(filter.t_22=='true'){ 
+                      tank22 = data[i].tanki_22;
+                      f22 = {
                         'x': dz,
                         'y': tank22
-                    }
-                  
-                    t3.push(f3);
-                    t4.push(f4);
-                    t5.push(f5);
-                    t6.push(f6);
-                    t7.push(f7);
-                    t8.push(f8);
-                    t10.push(f10);
-                    t17.push(f17);
-                    t21.push(f21);
-                    t22.push(f22);
+                      };
+                      t22.push(f22);
+                    }  
                    
                 
 
@@ -533,7 +549,7 @@
                     d = newDate.toISOString();
 
                     dt = d.split('T')[1];
-                    dz = dt.split('.')[0];
+                    dz = data[i].last_update;
 
                     f3 = {
                         'x': dz,
