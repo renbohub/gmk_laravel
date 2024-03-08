@@ -31,13 +31,14 @@ class CheckSession
         $page = $data;
         $containsDashboard = false;
         // dd($page);
+       
         foreach ($page as $item) {
             if ($item['route_name'] === $currentroute) {
                 $containsDashboard = true;
                 break;  // If found, no need to continue the loop
             }
         }
-
+        
         if ($containsDashboard) {
              return $next($request);
         } else {

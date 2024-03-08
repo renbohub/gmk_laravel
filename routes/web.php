@@ -37,8 +37,15 @@ Route::group(['middleware' => ['CheckSession']], function(){
     
 });
 
-//api ajax
+
 Route::post('/realtime-valve', 'App\Http\Controllers\Main\RealtimeDataController@realtimeValve')->name('realtime.valve');
 Route::post('/realtime-tank', 'App\Http\Controllers\Main\RealtimeDataController@realtimeTank')->name('realtime.tank');
 Route::post('/graphic-tank', 'App\Http\Controllers\Main\RealtimeDataController@graphicTank')->name('graphic.tank');
 Route::post('/graphic-tank-detail', 'App\Http\Controllers\Main\RealtimeDataController@graphicTankDetail')->name('graphic.tank.detail');
+Route::get('/edit/shift/detail', 'App\Http\Controllers\Main\EditController@editShiftDetail')->name('edit.shift.detail');
+Route::get('/edit/user/detail', 'App\Http\Controllers\Main\EditController@editUserDetail')->name('edit.user.detail');
+Route::get('/edit/permission/detail', 'App\Http\Controllers\Main\EditController@editPermissionDetail')->name('edit.permission.detail');
+Route::post('/edit/permission/detail/action', 'App\Http\Controllers\Main\EditController@editPermissionDetailAct')->name('edit.permission.detail.act');
+Route::post('/edit/shift/action', 'App\Http\Controllers\Main\EditController@editShiftAct')->name('edit.shift.action');
+Route::post('/edit/user/action', 'App\Http\Controllers\Main\EditController@editUserAct')->name('edit.user.action');
+Route::post('/edit/permission/action', 'App\Http\Controllers\Main\EditController@editPermissionAct')->name('edit.permission.action');

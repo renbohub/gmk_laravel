@@ -385,7 +385,7 @@
 
                     dt = d.split('T')[1];
 
-                    dz = data[i].last_update;
+                    dz = d;
                     if(filter.t_3=='true'){ 
                       tank3 = data[i].tanki_3;
                       f3 = {

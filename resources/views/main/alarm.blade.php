@@ -1,5 +1,8 @@
 @extends('layouts.layout')   
     @section('content')
+    <link href="{{asset('public/sites/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/sites/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/sites/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css')}}" rel="stylesheet">
         <div class="container-fluid ">
             <div class="row pt-4">
               
@@ -39,24 +42,24 @@
                 <div class="card">
                   <div class="card-header pt-2 py-1"><h4>Alarm Log</h4></div>
                   <div class="card-body">
-                    <table class="table" id="alarm-table">
+                    <table class="table text-nowrap w-100 bg-white text-dark" id="alarm-table">
                       <thead>
                           <tr>
-                              <th>id</th>
-                              <th>Start</th>
-                              <th>End</th>
-                              <th>Desc</th>
-                              <th>Status</th>
+                              <th style="color: black">id</th>
+                              <th style="color: black">Start</th>
+                              <th style="color: black">End</th>
+                              <th style="color: black">Desc</th>
+                              <th style="color: black">Status</th>
                           </tr>
                       </thead>
                       <tbody>
                         @foreach ($report as $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->start_alarm }}</td>
-                            <td>{{ $item->end_alarm }}</td>
-                            <td>{{ $item->desc}}</td>
-                            <td>{{ $item->status }}</td>
+                            <td style="color: black">{{ $item->id }}</td>
+                            <td style="color: black">{{ $item->start_alarm }}</td>
+                            <td style="color: black">{{ $item->end_alarm }}</td>
+                            <td style="color: black">{{ $item->desc}}</td>
+                            <td style="color: black">{{ $item->status }}</td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -75,28 +78,34 @@
             </div>
         </div>
 
-<!-- Include DataTables CSS and JS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+        
+    @endsection
+    <!-- Include DataTables CSS and JS -->
+
+    @section('script')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
 <!-- Include DataTables Buttons CSS and JS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.1.1/css/buttons.dataTables.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.1.1/js/buttons.print.min.js"></script>
-        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-        
-    @endsection
-    @section('script')
+<!-- required js -->
+<script src="{{asset('public/sites/plugins/datatables.net/js/jquerydataTables.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('public/sites/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
     <script>
-      $(document).ready(function () {
-          $('#alarm-table').DataTable({
-            dom: 'Bfrtip', // Buttons extension
+        $('#alarm-table').DataTable({
+          dom: 'Bfrtip', // Buttons extension
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         });
-      });
   </script>
     @endsection
     
