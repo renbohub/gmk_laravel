@@ -49,3 +49,4 @@ Route::post('/edit/permission/detail/action', 'App\Http\Controllers\Main\EditCon
 Route::post('/edit/shift/action', 'App\Http\Controllers\Main\EditController@editShiftAct')->name('edit.shift.action');
 Route::post('/edit/user/action', 'App\Http\Controllers\Main\EditController@editUserAct')->name('edit.user.action');
 Route::post('/edit/permission/action', 'App\Http\Controllers\Main\EditController@editPermissionAct')->name('edit.permission.action');
+Route::post('/report-data-excel', 'App\Http\Controllers\Main\DashboardController@reportDataExcel')->name('export.data.excel');

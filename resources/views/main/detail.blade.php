@@ -267,6 +267,25 @@
             zoom: {
                 enabled: false
             },
+            toolbar: {
+              export: {
+                csv: {
+                  filename: undefined,
+                  columnDelimiter: ',',
+                  headerCategory: 'category',
+                  headerValue: 'value',
+                  dateFormatter(timestamp) {
+                    return new Date(timestamp).toDateString()
+                  }
+                },
+                svg: {
+                  filename: undefined,
+                },
+                png: {
+                  filename: undefined,
+                }
+              },
+            },
             animations: {
                 enabled: false,
             }

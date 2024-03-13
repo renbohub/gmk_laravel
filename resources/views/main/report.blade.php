@@ -9,46 +9,85 @@
                   <div class="card-body">
                     <form action="{{route('export.data')}}" method="post" id="report_option">
                       @csrf
-                      <div class="mb-3" id="year">
-                        <label for="year" class="form-label">Start From</label>
-                        <input type="date" class="form-control"  name="date-start">
-                      </div>
-                      <div class="mb-3" id="year">
-                        <label for="year" class="form-label">End Date</label>
-                        <input type="date" class="form-control"  name="date-end">
-                      </div>
-                      <div class="mb-3" id="shift">
-                        <label for="shift" class="from-label">Shift</label>
-                        <div class="form-group" style="width: 100%!important">
-                          <select id="example-getting-started" class="form-control" name="shift[]" multiple="multiple" >
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                          </select>
+                        <div class="mb-3" id="year">
+                          <label for="year" class="form-label">Start From</label>
+                          <input type="date" class="form-control"  name="date-start" requireds>
                         </div>
-                      </div>
-                      <div class="mb-3" id="tank">
-                        <label for="tank" class="from-label">Select Tank</label>
-                        <div class="form-group" style="width: 100%!important; ">
-                          <select id="example-getting-started" class="form-control" name="tank[]" multiple="multiple" style="height: 210px!important;">
-                              <option value="t_3">tank 3</option>
-                              <option value="t_4">tank 4</option>
-                              <option value="t_5">tank 5</option>
-                              <option value="t_6">tank 6</option>
-                              <option value="t_7">tank 7</option>
-                              <option value="t_8">tank 8</option>
-                              <option value="t_10">tank 10</option>
-                              <option value="t_17">tank 17</option>
-                              <option value="t_21">tank 21</option>
-                              <option value="t_22">tank 22</option>
-                          </select>
+                        <div class="mb-3" id="year">
+                          <label for="year" class="form-label">End Date</label>
+                          <input type="date" class="form-control"  name="date-end" required>
                         </div>
-                      </div>
+                        <div class="mb-3" id="shift">
+                          <label for="shift" class="from-label">Shift</label>
+                          <div class="form-group" style="width: 100%!important">
+                            <select id="example-getting-started" class="form-control" name="shift[]" multiple="multiple" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="mb-3" id="tank">
+                          <label for="tank" class="from-label">Select Tank</label>
+                          <div class="form-group" style="width: 100%!important; ">
+                            <select id="example-getting-started" class="form-control" name="tank[]" multiple="multiple" style="height: 210px!important;" required>
+                                <option value="t_3">tank 3</option>
+                                <option value="t_4">tank 4</option>
+                                <option value="t_5">tank 5</option>
+                                <option value="t_6">tank 6</option>
+                                <option value="t_7">tank 7</option>
+                                <option value="t_8">tank 8</option>
+                                <option value="t_10">tank 10</option>
+                                <option value="t_17">tank 17</option>
+                                <option value="t_21">tank 21</option>
+                                <option value="t_22">tank 22</option>
+                            </select>
+                          </div>
+                        </div>
                       <div class="mb-3" id="year">
                         <button type="submit" class="btn btn-success" id="submitBtn">Submit</button>
                       </div>
-                      
-                      <button type="submit" id="export-btn" class="btn btn-primmary">Export to Excel</button>
+                    </form>
+                    <form action="{{route('export.data.excel')}}" method="post" id="report_excel">
+                      @csrf
+                        <div class="mb-3" id="year">
+                          
+                          <input type="hidden" class="form-control"  name="date-start" value="{{ isset($payload['date-start']) ? $payload['date-start'] : '' }}" required>
+                        </div>
+                        <div class="mb-3" id="year">
+                          
+                          <input type="hidden" class="form-control"  name="date-end" value="{{ isset($payload['date-end']) ? $payload['date-end'] : '' }}" required>
+                        </div>
+                        <div class="mb-3" id="shift">
+                          
+                          <div class="form-group" style="width: 100%!important">
+                            <select type="hidden" id="example-getting-started" class="form-control d-none" name="shift[]" multiple="multiple" required>
+                                <option value="1" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>3</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="mb-3" id="tank">
+                          <div class="form-group" style="width: 100%!important; ">
+                            <select type="hidden" id="example-getting-started" class="form-control d-none" name="tank[]" multiple="multiple" style="height: 210px!important;" required>
+                                <option value="t_3" {{ isset($payload['tank']) && in_array('t_3', $payload['tank']) ? 'selected' : '' }}>tank 3</option>
+                                <option value="t_4" {{ isset($payload['tank']) && in_array('t_4', $payload['tank']) ? 'selected' : '' }}>tank 4</option>
+                                <option value="t_5" {{ isset($payload['tank']) && in_array('t_5', $payload['tank']) ? 'selected' : '' }}>tank 5</option>
+                                <option value="t_6" {{ isset($payload['tank']) && in_array('t_6', $payload['tank']) ? 'selected' : '' }}>tank 6</option>
+                                <option value="t_7" {{ isset($payload['tank']) && in_array('t_7', $payload['tank']) ? 'selected' : '' }}>tank 7</option>
+                                <option value="t_8" {{ isset($payload['tank']) && in_array('t_8', $payload['tank']) ? 'selected' : '' }}>tank 8</option>
+                                <option value="t_10" {{ isset($payload['tank']) && in_array('t_10', $payload['tank']) ? 'selected' : '' }}>tank 10</option>
+                                <option value="t_17" {{ isset($payload['tank']) && in_array('t_17', $payload['tank']) ? 'selected' : '' }}>tank 17</option>
+                                <option value="t_21" {{ isset($payload['tank']) && in_array('t_21', $payload['tank']) ? 'selected' : '' }}>tank 21</option>
+                                <option value="t_22" {{ isset($payload['tank']) && in_array('t_22', $payload['tank']) ? 'selected' : '' }}>tank 22</option>
+                            </select>
+                          </div>
+                        </div>
+                      <div class="mb-3" id="year">
+                        <button type="submit" class="btn btn-success" id="submitBtn">Export to Excel</button>
+                      </div>
+                        
                      
                     </form>
                      
@@ -95,7 +134,26 @@
                 },
                 animations: {
                     enabled: false,
-                }
+                },
+                toolbar: {
+                  export: {
+                    csv: {
+                      filename: undefined,
+                      columnDelimiter: ',',
+                      headerCategory: 'category',
+                      headerValue: 'value',
+                      dateFormatter(timestamp) {
+                        return new Date(timestamp).toDateString()
+                      }
+                    },
+                    svg: {
+                      filename: undefined,
+                    },
+                    png: {
+                      filename: undefined,
+                    }
+                  },
+                },
             },
             dataLabels: {
               enabled: false
