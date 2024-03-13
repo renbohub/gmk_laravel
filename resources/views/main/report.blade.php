@@ -63,8 +63,8 @@
                           <div class="form-group" style="width: 100%!important">
                             <select type="hidden" id="example-getting-started" class="form-control d-none" name="shift[]" multiple="multiple" required>
                                 <option value="1" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>1</option>
-                                <option value="2" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>2</option>
-                                <option value="3" {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? 'selected' : '' }}>3</option>
+                                <option value="2" {{ isset($payload['shift']) && in_array('2', $payload['shift']) ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ isset($payload['shift']) && in_array('3', $payload['shift']) ? 'selected' : '' }}>3</option>
                             </select>
                           </div>
                         </div>
