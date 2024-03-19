@@ -42,7 +42,7 @@
                 <div class="card">
                   <div class="card-header pt-2 py-1"><h4>Alarm Log</h4></div>
                   <div class="card-body">
-                    <table class="table text-nowrap w-100 bg-white text-dark" id="alarm-table">
+                    <table class="table text-nowrap w-100 " id="alarm-table">
                       <thead>
                           <tr>
                               <th style="color: black">id</th>

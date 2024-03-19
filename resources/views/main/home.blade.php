@@ -316,9 +316,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>00-00-00 00:00:00</td>
-                                            <td>Error PLC with alarm battery</td>
-                                            <td>10</td>
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
@@ -527,7 +525,7 @@
                                         SV6A
                                     </td>
                                     <td>
-                                        <div class="text-center text-dark border bg-danger bg-opacity-40" id="t-sv6a">
+                                        <div class="text-center border bg-danger bg-opacity-40" id="t-sv6a">
                                             Closed
                                         </div>
                                     </td>

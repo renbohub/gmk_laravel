@@ -26,7 +26,7 @@
 
             <!-- BEGIN brand -->
             <div class="brand">
-                <a href="index.php" class="brand-logo">
+                <a href="#" class="brand-logo">
                     <span class="brand-img">
                         <span class="brand-img-text text-theme"><b>S</b></span>
 
@@ -59,7 +59,8 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
-
+                        
+                        @if(session('Users')['role_id'] ==1)
                         <a class="dropdown-item d-flex align-items-center" href="{{route('edit.shift')}}">Edit Shift <i
                                 class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i>
                         </a>
@@ -68,9 +69,21 @@
                             class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex align-items-center" href="{{route('edit.permission')}}">Edit User <i
+                        <a class="dropdown-item d-flex align-items-center" href="{{route('edit.user')}}">Edit User <i
                             class="bi bi-gear ms-auto text-theme fs-16px my-n1"></i>
                         </a>
+                        
+                        
+                        
+                        @else
+                        <div class="dropdown-divider"></div>
+                        <form action="{{route('edit.user.cp')}}" method="POST" id="report_option">
+                            @csrf      
+                            <input type="hidden" class="form-control"  name="id" value="{{session('Users')['id'] }}">
+                            <button type="submit" class="dropdown-item d-flex align-items-center" id="submitBtn">Change Password</button>
+                        </form> 
+                        
+                        @endif
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item d-flex align-items-center"
                             href="{{route('logout-action')}}">LOGOUT <i

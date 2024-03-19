@@ -90,6 +90,9 @@
                         
                      
                     </form>
+                    <div class="my-3">
+                      <button id="pdfButton" class="btn btn-danger">Download PDF</button>
+                    </div>
                      
                   </div>
                   <div class="card-arrow">
@@ -102,7 +105,7 @@
               </div>
               <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                  <div class="card-body">
+                  <div class="card-body" id="dvContainer">
                     <div id="chart_main"></div>
                   </div>
                   <div class="card-arrow">
@@ -116,6 +119,8 @@
             </div>
         </div>
         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+        <script src="{{asset('public/sites/js/jspdf.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#example-getting-started').multiselect();
@@ -350,7 +355,20 @@
                     name: 'Tanki 22',
                     data: t22
                 }]);
-                
+              
+                function generatePDF() {
+                  var divContents = $("#dvContainer").html();
+                  var printWindow = window.open('', '', 'height=400,width=800');
+                  printWindow.document.write('<html><head><title>Graphic Content</title>');
+                  printWindow.document.write('</head><body >');
+                  printWindow.document.write(divContents);
+                  printWindow.document.write('</body></html>');
+                  printWindow.document.close();
+                  printWindow.print();
+                }
+
+                // Event listener for button click to generate PDF
+                document.getElementById('pdfButton').addEventListener('click', generatePDF);
       
     </script>
     @endsection

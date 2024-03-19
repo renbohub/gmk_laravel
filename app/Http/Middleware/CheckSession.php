@@ -38,7 +38,6 @@ class CheckSession
                 break;  // If found, no need to continue the loop
             }
         }
-        
         if ($containsDashboard) {
              return $next($request);
         } else {

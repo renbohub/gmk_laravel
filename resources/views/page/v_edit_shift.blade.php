@@ -30,8 +30,9 @@
                                <td> {{$s->shift_no}}</td>
                                <td> {{$s->shift_start}}</td>
                                <td> {{$s->shift_end}}</td>
-                               <td><form action="{{route('edit.shift.detail')}}" method="GET" id="report_option">
-                                         <input type="hidden" class="form-control"  name="id" value="{{$s->shift_id}}">
+                               <td>
+                                    <form action="{{route('edit.shift.detail')}}" method="GET" id="report_option">
+                                        <input type="hidden" class="form-control"  name="id" value="{{$s->shift_id}}">
                                         <button type="submit" class="btn btn-success" id="submitBtn">Edit</button>
                                     </form>
                                 </td>
