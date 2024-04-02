@@ -1,9 +1,18 @@
 @extends('layouts.layout')   
     @section('content')
+    <style>
+      .hidden {
+          display: none;
+      }
+      @media print { 
+        .hidden{ 
+          display: block; 
+        }
+      }
+  </style>
         <div class="container-fluid ">
-            <div class="row pt-4">
-              
-              <div class="col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="row pt-4">        
+              <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-print-none">
                 <div class="card">
                   <div class="card-header pt-2 py-1"><h4>Reporting Option</h4></div>
                   <div class="card-body">
@@ -105,8 +114,23 @@
               </div>
               <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                 <div class="card">
-                  <div class="card-body" id="dvContainer">
-                    <div id="chart_main"></div>
+                  <div class="card-body bg-white" >
+                      <div  id="chart_main"></div>
+                      
+                  </div>
+                  <div class="card-footer bg-light text-dark">
+                    Date Picked : {{ isset($payload['date-start']) ? $payload['date-start'] : '' }} s/d {{ isset($payload['date-start']) ? $payload['date-start'] : '' }} <br>
+                    Shift : {{ isset($payload['shift']) && in_array('1', $payload['shift']) ? '1,' : '' }}{{ isset($payload['shift']) && in_array('2', $payload['shift']) ? '2,' : '' }}{{ isset($payload['shift']) && in_array('3', $payload['shift']) ? '3' : '' }} <br>
+                    Tanki Selected: {{ isset($payload['tank']) && in_array('t_3', $payload['tank']) ? 'tanki 3,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_4', $payload['tank']) ? 'tanki 4,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_5', $payload['tank']) ? 'tanki 5,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_6', $payload['tank']) ? 'tanki 6,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_7', $payload['tank']) ? 'tanki 7,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_8', $payload['tank']) ? 'tanki 8,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_10', $payload['tank']) ? 'tanki 10,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_17', $payload['tank']) ? 'tanki 17,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_21', $payload['tank']) ? 'tanki 21,' : '' }}
+                    {{ isset($payload['tank']) && in_array('t_22', $payload['tank']) ? 'tanki 22,' : '' }}
                   </div>
                   <div class="card-arrow">
                     <div class="card-arrow-top-left"></div>
@@ -167,8 +191,8 @@
               curve: 'straight'
             },
             title: {
-              text: '',
-              align: 'left'
+              text: 'Reporti Volume Tank',
+              align: 'center'
             },
             grid: {
               row: {
@@ -205,6 +229,8 @@
     // render chart
         var chart = new ApexCharts(document.querySelector("#chart_main"), options);
         chart.render();
+
+      
 
         var a = @json($report);
         var b = @json($tank);
@@ -355,17 +381,33 @@
                     name: 'Tanki 22',
                     data: t22
                 }]);
-              
+
+               
+                chart.updateOptions({
+                  yaxis: {
+                      labels: {
+                          style: {
+                              colors: ['#000']
+                          }
+                      }
+                  },
+                  xaxis: {
+                    type: 'datetime',
+                    labels: {
+                      style: {
+                        colors: '#000',
+                      }
+                    },
+
+                  }
+                })
                 function generatePDF() {
-                  var divContents = $("#dvContainer").html();
-                  var printWindow = window.open('', '', 'height=400,width=800');
-                  printWindow.document.write('<html><head><title>Graphic Content</title>');
-                  printWindow.document.write('</head><body >');
-                  printWindow.document.write(divContents);
-                  printWindow.document.write('</body></html>');
-                  printWindow.document.close();
-                  printWindow.print();
+                    // Get the HTML content of the container
+                    window.print()
+
+                    
                 }
+
 
                 // Event listener for button click to generate PDF
                 document.getElementById('pdfButton').addEventListener('click', generatePDF);

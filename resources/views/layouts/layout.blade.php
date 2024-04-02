@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
-    <title>GMK Draft</title>
+    <title>GMK IOT TANK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -19,7 +19,7 @@
     <!-- BEGIN #app -->
     <div id="app" class="app app-content-full-width" >
         <!-- BEGIN #header -->
-        <div id="header" class="app-header">
+        <div id="header" class="app-header d-print-none">
             <!-- BEGIN desktop-toggler -->
 
             <!-- END mobile-toggler -->
@@ -116,7 +116,7 @@
 
         <!-- BEGIN btn-scroll-top -->
         <div class="bg-dark bg-opacity-70 text-white">
-    <div class="container-fluid">
+    <div class="container-fluid d-print-none">
         <div class="row">
             <div class="col-6">
                 <ul class="nav justify-content-start">
@@ -155,7 +155,7 @@
 <!-- END btn-scroll-top -->
 </div>
 <!-- END #app -->
-        <div class="app-theme-panel">
+        <div class="app-theme-panel d-print-none">
            <div class="app-theme-panel-container">
                <a href="javascript:;" data-toggle="theme-panel-expand" class="app-theme-toggle-btn"><i class="bi bi-sliders"></i></a>
                <div class="app-theme-panel-content">
