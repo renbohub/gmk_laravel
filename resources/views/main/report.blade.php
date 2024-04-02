@@ -1,15 +1,12 @@
 @extends('layouts.layout')   
     @section('content')
     <style>
-      .hidden {
-          display: none;
-      }
-      @media print { 
-        .hidden{ 
-          display: block; 
+      @media print {
+        @page {
+          size: landscape;
         }
       }
-  </style>
+    </style>
         <div class="container-fluid ">
             <div class="row pt-4">        
               <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-print-none">
