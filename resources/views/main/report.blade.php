@@ -218,7 +218,7 @@
             },
             legend: {
                 labels: {
-                    colors: '#fff'
+                    colors: '#000'
                 }
             }
         };
